@@ -1,0 +1,66 @@
+
+.container {
+    width: 400px;
+    padding: 10px;
+  }
+
+  body {
+    min-width: 200px; /* Adjust as needed */
+    max-width: 800px; /* Maximum width for Chrome popups */
+    width: auto;
+    white-space: nowrap;
+  }
+  
+  .title-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  #title {
+    margin: 0;
+  }
+
+  #version {
+    font-size: 14px;
+    margin-left: 10px;
+  }
+
+  .box {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  h2 {
+    margin-top: 0;
+  }
+
+  #tabInfo, #linkValues {
+    white-space: normal;
+  }
+  
+  input[type="text"] {
+    display: block;
+    width: 100%; /* Make input take up 100% of the parent's width */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    margin-top: 5px;
+  }
+
+  #tabTitle, #tabURL, #selectedText {
+    white-space: nowrap; 
+    overflow-x: auto; 
+    max-height: 100px; 
+    overflow-y: auto;
+  }
+
+  .no-text-selected {
+    font-weight: bold;
+  }
+
+  .scrollable {
+    white-space: nowrap;
+    overflow-x: auto;
+    max-height: 100px;
+    overflow-y: auto;
+  }

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="popup.css">
+  </head>
+  <body>
+    <div class="container">
+        <div class="title-container">
+            <h1 id="title"></h1>
+            <span id="version"></span>
+        </div>
+
+      <div class="box">
+        <h2>Tab Information</h2>
+        <p><strong>Title:</strong></p>
+        <div id="tabTitle" class="scrollable"></div>
+        <p><strong>URL:</strong></p>
+        <div id="tabURL" class="scrollable"></div>
+        <p><strong id="selectedTextTitle">Selected text:</strong></p>
+        <div id="selectedText" class="scrollable"></div>
+      </div>      
+
+      <div class="box">
+        <h2>Link Values</h2>
+        <label for="linkTitle">Title:</label>
+        <input type="text" id="linkTitle" name="linkTitle">
+        <label for="linkAddress">Address:</label>
+        <input type="text" id="linkAddress" name="linkAddress">
+      </div>
+
+      <div class="button-container">
+        <button id="copyButton">Copy</button>
+        <button id="cancelButton">Cancel</button>
+      </div>
+    </div>
+    <script src="popup.js"></script>
+  </body>
+</html>
