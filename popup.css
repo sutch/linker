@@ -1,66 +1,91 @@
-
 .container {
-    width: 400px;
-    padding: 10px;
-  }
+  width: 400px;
+  padding: 10px;
+}
 
-  body {
-    min-width: 200px; /* Adjust as needed */
-    max-width: 800px; /* Maximum width for Chrome popups */
-    width: auto;
-    white-space: nowrap;
-  }
-  
-  .title-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
+body {
+  min-width: 200px;
+  max-width: 800px;
+  width: auto;
+  white-space: normal; /* Allow wrapping */
+}
 
-  #title {
-    margin: 0;
-  }
+.title-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 
-  #version {
-    font-size: 14px;
-    margin-left: 10px;
-  }
+#title {
+  margin: 0;
+}
 
-  .box {
-    border: 1px solid #ccc;
-    padding: 10px;
-    margin-bottom: 10px;
-  }
-  
-  h2 {
-    margin-top: 0;
-  }
+#version {
+  font-size: 14px;
+  margin-left: 10px;
+}
 
-  #tabInfo, #linkValues {
-    white-space: normal;
-  }
-  
-  input[type="text"] {
-    display: block;
-    width: 100%; /* Make input take up 100% of the parent's width */
-    box-sizing: border-box; /* Include padding and border in the element's total width and height */
-    margin-top: 5px;
-  }
+.box {
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  overflow: hidden;
+}
 
-  #tabTitle, #tabURL, #selectedText {
-    white-space: nowrap; 
-    overflow-x: auto; 
-    max-height: 100px; 
-    overflow-y: auto;
-  }
+.box h2 {
+  margin-bottom: 2px;
+}
 
-  .no-text-selected {
-    font-weight: bold;
-  }
+h2 {
+  margin-top: 0;
+}
 
-  .scrollable {
-    white-space: nowrap;
-    overflow-x: auto;
-    max-height: 100px;
-    overflow-y: auto;
-  }
+.box p {
+  margin: 0 0 5px 0;
+  white-space: normal;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.box p strong {
+  margin-bottom: 2px; /* Add a bottom margin to titles */
+}
+
+.no-text-selected {
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+#tabInfo, #linkValues {
+  white-space: normal;
+}
+
+input[type="text"], .expandable, .scrollable {
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 5px;
+}
+
+.expandable {
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 5px;
+  resize: vertical;
+  overflow: auto; /* Add this line to allow scrolling */
+}
+
+.scrollable, .expandable {
+  margin-top: 2px; /* Reduce the top margin for content below titles */
+  margin-bottom: 5px; /* Ensure there's some space before the next title */
+}
+
+#tabTitle, #tabURL, #selectedText, .scrollable {
+  white-space: nowrap;
+  overflow-x: auto;
+  max-height: 100px;
+  overflow-y: auto;
+}
+
+.no-text-selected {
+  font-weight: bold;
+}

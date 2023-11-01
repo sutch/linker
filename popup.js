@@ -32,43 +32,25 @@ document.addEventListener('DOMContentLoaded', function () {
             chrome.tabs.sendMessage(currentTab.id, {message: "getSelectedText"}, function(response) {
                 const selectedTextDiv = document.getElementById('selectedText');
                 const selectedTextTitle = document.getElementById('selectedTextTitle');
-  
+        
                 if(response && response.text) {
                     // If there's selected text, update the title and display it
                     selectedTextTitle.textContent = 'Selected text:';
                     selectedTextDiv.textContent = response.text;
                     selectedTextDiv.classList.remove('no-text-selected');
-  
+        
                     // Set linkTitle input to selected text
                     linkTitleInput.value = response.text;
                 } else {
                     // If no text is selected, update the title and clear previous text
-                    selectedTextTitle.textContent = 'No text selected';
+                    selectedTextTitle.textContent = 'Selected text: No selected text found';
                     selectedTextDiv.textContent = '';
                     selectedTextDiv.classList.add('no-text-selected');
                 }
             });
         });
+        
     });
-
-    // // Adding a click event listener to the "Copy" button to copy link to clipboard
-    // const copyButton = document.getElementById('copyButton');
-    // copyButton.addEventListener('click', function() {
-    //     const linkTitle = document.getElementById('linkTitle').value;
-    //     const linkAddress = document.getElementById('linkAddress').value;
-    
-    //     // Creating a link element
-    //     const link = document.createElement('a');
-    //     link.href = linkAddress;
-    //     link.textContent = linkTitle;
-    
-    //     // Creating a new ClipboardItem and putting it on the clipboard
-    //     const clipboardItem = new ClipboardItem({'text/html': new Blob([link.outerHTML], {type: 'text/html'})});
-    //     navigator.clipboard.write([clipboardItem])
-    //     .then(() => console.log('Link copied to clipboard!'))
-    //     .catch(err => console.error('Failed to copy link: ', err));
-    // });
-
 
     // Adding a click event listener to the "Copy" button to copy link to clipboard
     const copyButton = document.getElementById('copyButton');
@@ -104,4 +86,51 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
   });
-  
+
+    // Add an event listener for when the content of the popup has fully loaded
+    document.body.addEventListener('paste', function (event) {
+        // Prevent the default paste behavior
+        event.preventDefault();
+    
+        // Get the currently focused element in the popup
+        var focusedElement = document.activeElement;
+    
+        // Retrieve the text and HTML content from the clipboard
+        var text = (event.clipboardData || window.clipboardData).getData('text/plain');
+        var html = (event.clipboardData || window.clipboardData).getData('text/html');
+    
+        function insertAtCursor(input, textToInsert) {
+        var start = input.selectionStart;
+        var end = input.selectionEnd;
+        var text = input.value;
+        var before = text.substring(0, start);
+        var after = text.substring(end, text.length);
+        input.value = (before + textToInsert + after);
+        input.setSelectionRange(start + textToInsert.length, start + textToInsert.length);
+        input.focus();
+        }
+    
+        if (focusedElement === linkTitle) {
+        if (html && /<a\s+href="[^"]*"[^>]*>.*<\/a>/.test(html)) {
+            var parser = new DOMParser();
+            var doc = parser.parseFromString(html, 'text/html');
+            var anchor = doc.querySelector('a');
+            if (anchor) {
+            insertAtCursor(linkTitle, anchor.textContent || anchor.innerText);
+            }
+        } else if (text) {
+            insertAtCursor(linkTitle, text);
+        }
+        } else if (focusedElement === linkAddress) {
+        if (html && /<a\s+href="[^"]*"[^>]*>.*<\/a>/.test(html)) {
+            var parser = new DOMParser();
+            var doc = parser.parseFromString(html, 'text/html');
+            var anchor = doc.querySelector('a');
+            if (anchor) {
+            insertAtCursor(linkAddress, anchor.href);
+            }
+        } else if (text) {
+            insertAtCursor(linkAddress, text);
+        }
+        }
+    });
