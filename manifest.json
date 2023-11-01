@@ -2,7 +2,7 @@
     "manifest_version": 3,
     "name": "Linker",
     "version": "1.0",
-    "description": "A simple extension to display title and version.",
+    "description": "A chromium extension to generate a customizable hyperlink using data from the current tab and copy it to the clipboard.",
     "action": {
       "default_popup": "popup.html",
       "default_icon": {

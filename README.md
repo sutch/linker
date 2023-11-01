@@ -1,6 +1,6 @@
 # Linker
 
-A Chromium extension that copies a link based on the current tab to the clipboard.
+A chromium extension to generate a customizable hyperlink using data from the current tab and copy it to the clipboard.
 
 ## Installation
 
