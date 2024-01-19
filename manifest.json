@@ -16,7 +16,7 @@
       "48": "images/icon48.png",
       "128": "images/icon128.png"
     },
-    "permissions": ["activeTab", "storage", "scripting", "clipboardWrite"],
+    "permissions": ["activeTab", "scripting", "clipboardWrite"],
     "content_scripts": [
       {
         "matches": ["<all_urls>"],
@@ -24,4 +24,3 @@
       }
     ]
   }
-  
