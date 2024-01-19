@@ -1,7 +1,7 @@
 {
     "manifest_version": 3,
     "name": "Linker",
-    "version": "1.0",
+    "version": "1.0.1",
     "description": "A chromium extension to generate a customizable hyperlink using data from the current tab and copy it to the clipboard.",
     "action": {
       "default_popup": "popup.html",
