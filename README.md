@@ -28,6 +28,10 @@ This browser extension requires specific permissions to operate effectively. Bel
 - **`clipboardWrite`**: Grants the extension permission to write to the clipboard. This is specifically used for writing the crafted link to the clipboard, enabling it to be pasted elsewhere. This feature enhances the usability of the extension by streamlining the link-sharing process.
 - **`matches`: `<all_urls>` for `content_scripts`**: This host permission is necessary so that the extension can create links from any URL. It allows the extension's content scripts to run on all web pages you visit, providing the ability to generate page links on any site.
 
+## Source Code
+
+The source code for this extension is maintained at https://github.com/sutch/linker.
+
 ## Contributing
 
 Contributions are welcome! If you find a bug or have a feature request, please open an issue on the GitHub repository.
